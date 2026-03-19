@@ -145,10 +145,34 @@ body.home {
     width: 25%;
 }
 /**About Page**/
-.about td {
-    vertical-align: middle;
-    padding: 10px;
+.about {
+    width: 100%;
+    border-collapse: collapse;
 }
+
+.about tr {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.about td {
+    padding: 100;
+}
+
+/* Image column */
+.about td:first-child {
+    flex: 0 0 100px;
+}
+
+.about td:first-child img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+
+
 
 /**Community Page**/
 .community {
@@ -202,6 +226,12 @@ body.home {
     padding-bottom: 20px;
 }
 /**Feature Page**/
+.feature-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .feature-page-block {
     border: 1px solid #efefef;
     padding: 20px;
@@ -223,3 +253,85 @@ footer {
 footer img {
     width: 35px;
 }
+
+/** CSS Media query for Tablet**/
+@media (min-width: 576px) and (max-width: 768px) {
+    header {
+        display: none;
+    }
+    
+    .about tr {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about td:first-child {
+        margin: 0 auto;
+    }
+
+    .community {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .community h2 {
+        grid-column: span 2;
+    }
+
+    .event-block.featured {
+        grid-column: span 2;
+    }
+    .feature-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/** CSS Media Query for Phones**/
+@media (max-width: 576px){
+    header {
+        display: none;
+    }
+    
+    .about tr {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about td:first-child {
+        margin: 0 auto;
+    }
+
+        .community {
+        grid-template-columns: 1fr;
+    }
+
+    .community h2 {
+        grid-column: span 1;
+    }
+
+    .event-block.featured {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "image"
+            "title"
+            "text";
+        text-align: center;
+    }
+
+    .event-block.featured h3,
+    .event-block.featured p {
+        text-align: center;
+    }
+
+    .feature-container {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-page-block {
+        width: 100%;
+        max-width: 500px;
+    }
+
+
+}
+
